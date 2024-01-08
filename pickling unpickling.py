@@ -1,0 +1,40 @@
+l=[1,2,3,4,5,8,2,5,4,6]
+target=9
+for i in range(len(l) - 1):
+    for j in range(i + 1, len(l)):
+        if l[i] + l[j] == target:
+            print("sum of two values:" ,l[i],"+",l[j],"=",target)
+
+
+#pickling and unpickling
+
+import pickle
+
+class Employee:
+    def __init__(self,eno,ename,esal):
+        self.eno=eno
+        self.ename=ename
+        self.esal=esal
+    def display(self):
+        print(self.eno,"/t",self.ename,"/t",self.esal)
+
+with open("emp.data","wb") as f:
+    b=Employee(244,"raju",20000)  
+    e=Employee(233,"aman",10000)
+    c=Employee(225,"bhagya",25000)
+    pickle.dump(b,f) 
+    pickle.dump(e,f)
+    pickle.dump(c,f)
+    
+    print("pickle of emp object is done ")
+
+#unpickle
+
+with open("emp.data","rb") as g:
+    obj=pickle.load(g)
+    obj2=pickle.load(g)
+    obj3=pickle.load(g)
+    obj.display()
+    obj2.display()
+    obj3.display()
+
